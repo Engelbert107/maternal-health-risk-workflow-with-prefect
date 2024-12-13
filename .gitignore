@@ -1,0 +1,13 @@
+# Python bytecode files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ignore the catboost_info folder
+catboost_info/
+
+# Ignore the file named =2.0
+=2.0
+
+# Other
+*.skops
