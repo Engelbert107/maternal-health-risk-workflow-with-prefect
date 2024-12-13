@@ -41,7 +41,8 @@ We also orchestrated the workflow for the best-performing model, K-Nearest Neigh
     python3 orchestrate.py
     ```
 
-### Get an Overview of how our run is Performing on the Cloud
+
+## Get an Overview of how our run is Performing on the Cloud
 
 ![](https://github.com/Engelbert107/maternal-health-risk-workflow-with-prefect/blob/main/images/running-view.png)
 
