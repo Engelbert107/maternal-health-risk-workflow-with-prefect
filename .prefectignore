@@ -40,5 +40,5 @@ dask-worker-space/
 .git/
 .hg/
 
-#
-.skops
+# Other
+*.skops
