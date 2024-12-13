@@ -26,7 +26,7 @@ We also orchestrated the workflow for the best-performing model, K-Nearest Neigh
 ![](https://github.com/Engelbert107/maternal-health-risk-workflow-with-prefect/blob/main/images/compare-models.png)
 
 
-## How to run ?
+## How to test our workflow ?
 1. Download the project repository to explore the code and documentation.
 2. Install packages.
     ```bash
