@@ -1,6 +1,7 @@
 import logging
 import numpy as np
 import pandas as pd
+import skops.io as sio
 from typing import Tuple
 from prefect import flow, task
 from imblearn.over_sampling import SMOTE
@@ -13,16 +14,16 @@ from sklearn.preprocessing import LabelEncoder, MinMaxScaler, PowerTransformer
 
 
 @task(name="Load data", description="Task to load data from a data directory")
-def load_data(filname: str) -> pd.DataFrame:
-    data = pd.read_csv(filname)
+def load_data(filename: str) -> pd.DataFrame:
+    data = pd.read_csv(filename)
     return data
 
 
 
 @task(name="Split data", description="Split data into Training, Validation , and Test set")
-def split_data(github_url: str) -> Tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.Series, pd.Series, pd.Series]:
+def split_data(filename: str) -> Tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.Series, pd.Series, pd.Series]:
     
-    df = load_data(github_url)
+    df = load_data(filename)
  
     X = df.drop(columns=["RiskLevel"])
     y = df["RiskLevel"]
@@ -70,7 +71,7 @@ def data_preprocessing(X_train: pd.DataFrame, X_valid: pd.DataFrame, X_test: pd.
 
 
 
-@task(name="training", description="Train the data and make prediction on the test set")
+@task(name="Train model", description="Train the data and make prediction on the test set")
 def training_predict(X_train_scaled: np.ndarray, X_test_scaled:np.ndarray, y_train_encoded: np.ndarray) -> np.ndarray:
     best_params = {
         "n_neighbors": 31,
@@ -81,15 +82,15 @@ def training_predict(X_train_scaled: np.ndarray, X_test_scaled:np.ndarray, y_tra
         "metric": "euclidean"
     }
 
-    best_knn_model = KNeighborsClassifier(**best_params)
-    best_knn_model.fit(X_train_scaled, y_train_encoded)
-    y_pred = best_knn_model.predict(X_test_scaled)
+    knn_model = KNeighborsClassifier(**best_params)
+    knn_model.fit(X_train_scaled, y_train_encoded)
+    y_pred = knn_model.predict(X_test_scaled)
     
-    return y_pred
+    return knn_model, y_pred
 
 
 
-@task(name="Evaluation", description="Evaluate the performance of the model on the test set")
+@task(name="Evaluate model", description="Evaluate the performance of the model on the test set")
 def evaluate_model(y_test_encoded: np.ndarray, prediction: np.ndarray) -> None:
     accuracy = accuracy_score(y_test_encoded, prediction)
     f1 = f1_score(y_test_encoded, prediction, average='weighted')
@@ -99,22 +100,30 @@ def evaluate_model(y_test_encoded: np.ndarray, prediction: np.ndarray) -> None:
 
 
 
+@task(name="Save model", description="Save the model for further use")
+def save_model(knn_model: KNeighborsClassifier):
+    sio.dump(knn_model, "mhr_knn_model.skops")
+    
+    
+    
 logger = logging.getLogger("prefect")
 
-@flow(log_prints=True)
-def run_ml_workflow(github_url: str="data/Maternal-Health-Risk-Data-Set.csv"):
+@flow(log_prints=True, name="workflow")
+def run_ml_workflow(filename: str="data/Maternal-Health-Risk-Data-Set.csv"):
     logger.info("Flow started.")
-    logger.info(f"Using dataset: {github_url}")
+    logger.info(f"Using dataset: {filename}")
     
-    X_train, X_valid, X_test, y_train, y_valid, y_test = split_data(github_url)
+    X_train, X_valid, X_test, y_train, y_valid, y_test = split_data(filename)
 
     X_train_scaled, X_valid_scaled, X_test_scaled, y_train_encoded, y_valid_encoded, y_test_encoded = data_preprocessing(
         X_train, X_valid, X_test, 
         y_train, y_valid, y_test,
-        transform_columns=["HeartRate", "BodyTemp", "BS"])
+        transform_columns=["HeartRate", "BodyTemp", "BS"]
+        )
     
-    predictions = training_predict(X_train_scaled, X_test_scaled, y_train_encoded)
+    knn_model, predictions = training_predict(X_train_scaled, X_test_scaled, y_train_encoded)
     evaluate_model(y_test_encoded, predictions)
+    save_model(knn_model)
     
 
 
