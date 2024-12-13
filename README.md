@@ -39,8 +39,8 @@ We also orchestrated the workflow for the best-performing model, K-Nearest Neigh
 
 ### Get an overview of how our run is performing on the cloud
 
-   ![](https://github.com/Engelbert107/maternal-health-risk-workflow-with-prefect/blob/main/images/run_app.png)
-3
+   ![](https://github.com/Engelbert107/maternal-health-risk-workflow-with-prefect/blob/main/images/running-view.png)
+
 
 ## Access this repository through the following links:
 - Access to the [data here](https://github.com/Engelbert107/maternal-health-risk-workflow-with-prefect/tree/main/data)
