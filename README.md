@@ -1,12 +1,14 @@
 # Maternal Health Risk Workflow With Prefect
 
-In this project, we implemented and evaluated several machine learning models to predict health risks. Among them, **K-Nearest Neighbors (KNN)** stood out as the top performer, achieving an impressive **89% accuracy** and **0.93 AUC** on the test set. KNN showed the fewest errors, as seen in the confusion matrix, and demonstrated strong predictive capability, effectively distinguishing between high- and low-risk classes. The most influential feature in the model was **Age**, which had a significant impact on predicting the risk of sickness.
+We aimed to predict health risks by implementing and evaluating several machine learning models. Among them, **K-Nearest Neighbors (KNN)** stood out as the top performer, achieving an impressive **89% accuracy** and **0.93 AUC** on the test set. Among the features analyzed, Age was identified as the most influential factor in predicting the risk of sickness.
+
+The most influential feature in the model was **Age**, which had a significant impact on predicting the risk of sickness.
 
 We also orchestrated the workflow for the best-performing model, K-Nearest Neighbors, using **Prefect**, ensuring a robust and automated pipeline for future predictions and model deployment.
 
 
 
-## Key Points and Recommendations
+## Key Points and Recommendations for Practical Applications
 
 1. **Focus on Age:**
     - **Younger mothers** should be educated on the importance of prenatal care.
@@ -21,7 +23,7 @@ We also orchestrated the workflow for the best-performing model, K-Nearest Neigh
     - This proactive approach can help prevent conditions like gestational hypertension and diabetes.
 
 
-## Model comparison 
+## Model Comparison on the Validation set
 
 ![](https://github.com/Engelbert107/maternal-health-risk-workflow-with-prefect/blob/main/images/compare-models.png)
 
