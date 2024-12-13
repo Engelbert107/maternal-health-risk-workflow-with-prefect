@@ -23,12 +23,14 @@ We also orchestrated the workflow for the best-performing model, K-Nearest Neigh
     - This proactive approach can help prevent conditions like gestational hypertension and diabetes.
 
 
+
 ## Model Comparison on the Validation set
 
 ![](https://github.com/Engelbert107/maternal-health-risk-workflow-with-prefect/blob/main/images/compare-models.png)
 
 
-## How to test our workflow ?
+
+## How to Test our Workflow ?
 1. Download the project repository to explore the code and documentation.
 2. Install packages.
     ```bash
@@ -39,12 +41,14 @@ We also orchestrated the workflow for the best-performing model, K-Nearest Neigh
     python3 orchestrate.py
     ```
 
-### Get an overview of how our run is performing on the cloud
+### Get an Overview of how our run is Performing on the Cloud
 
-   ![](https://github.com/Engelbert107/maternal-health-risk-workflow-with-prefect/blob/main/images/running-view.png)
+![](https://github.com/Engelbert107/maternal-health-risk-workflow-with-prefect/blob/main/images/running-view.png)
 
 
-## Access this repository through the following links:
+
+## Access this Repository Through the Following Links:
+
 - Access to the [data here](https://github.com/Engelbert107/maternal-health-risk-workflow-with-prefect/tree/main/data)
 - Access to the [notebook here](https://github.com/Engelbert107/maternal-health-risk-workflow-with-prefect/tree/main/notebook)
 - Access to different [images here](https://github.com/Engelbert107/maternal-health-risk-workflow-with-prefect/tree/main/images)
