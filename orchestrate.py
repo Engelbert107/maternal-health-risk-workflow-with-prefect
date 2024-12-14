@@ -1,7 +1,8 @@
+import os
+import joblib
 import logging
 import numpy as np
 import pandas as pd
-import skops.io as sio
 from typing import Tuple
 from prefect import flow, task
 from imblearn.over_sampling import SMOTE
@@ -10,11 +11,20 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, f1_score, recall_score
 from sklearn.preprocessing import LabelEncoder, MinMaxScaler, PowerTransformer
 
+save_dir = "models"
+os.makedirs(save_dir, exist_ok=True)
 
 
-@task(name="Load data", description="Task to load data from a data directory")
-def load_data(filename: str) -> pd.DataFrame:
+
+@task(name="Load and map target", description="Load data and map the target variable (RiskLevel) to new categories")
+def load_and_map_target(filename: str) -> pd.DataFrame:
+  
     data = pd.read_csv(filename)
+    
+    data['RiskLevel'] = data['RiskLevel'].map({'high risk': 'elevated risk', 
+                                                'mid risk': 'elevated risk',
+                                                'low risk': 'low risk'})
+    
     return data
 
 
@@ -22,7 +32,7 @@ def load_data(filename: str) -> pd.DataFrame:
 @task(name="Split data", description="Split data into Training, Validation , and Test set")
 def split_data(filename: str) -> Tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.Series, pd.Series, pd.Series]:
     
-    df = load_data(filename)
+    df = load_and_map_target(filename)
  
     X = df.drop(columns=["RiskLevel"])
     y = df["RiskLevel"]
@@ -66,11 +76,15 @@ def data_preprocessing(X_train: pd.DataFrame, X_valid: pd.DataFrame, X_test: pd.
     X_valid_scaled = scaler.transform(X_valid)
     X_test_scaled = scaler.transform(X_test)
     
+    joblib.dump(label_encoder, os.path.join(save_dir, "label_encoder.pkl"))
+    joblib.dump(scaler, os.path.join(save_dir, "scaler.pkl"))
+    joblib.dump(power_transformer, os.path.join(save_dir, "power_transformer.pkl"))
+    
     return X_train_scaled, X_valid_scaled, X_test_scaled, y_train_resampled, y_valid_encoded, y_test_encoded
 
 
 
-@task(name="Train model", description="Train the data and make prediction on the test set")
+@task(name="Train model", description="Train the model with the best hyperparameters and make prediction on the test set")
 def training_predict(X_train_scaled: np.ndarray, X_test_scaled:np.ndarray, y_train_encoded: np.ndarray) -> np.ndarray:
     best_params = {
         "n_neighbors": 31,
@@ -101,7 +115,7 @@ def evaluate_model(y_test_encoded: np.ndarray, prediction: np.ndarray) -> None:
 
 @task(name="Save model", description="Save the model for further use")
 def save_model(knn_model: KNeighborsClassifier):
-    sio.dump(knn_model, "mhr_knn_model.skops")
+    joblib.dump(knn_model, os.path.join(save_dir, "final_knn_model.pkl"))
     
     
     
