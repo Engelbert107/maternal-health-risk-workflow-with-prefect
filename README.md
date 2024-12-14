@@ -4,7 +4,7 @@ We aimed to predict health risks by implementing and evaluating several machine 
 
 The most influential feature in the model was **Age**, which had a significant impact on predicting the risk of sickness.
 
-We also orchestrated the workflow for the best-performing model, K-Nearest Neighbors, using **Prefect**, ensuring a robust and automated pipeline for future predictions and model deployment.
+We have successfully deployed our best-performing K-Nearest Neighbors model using Docker and Flask, while orchestrating the entire workflow with Prefect to ensure an efficient, automated pipeline for future predictions and model updates.
 
 
 
@@ -27,6 +27,7 @@ We also orchestrated the workflow for the best-performing model, K-Nearest Neigh
 ## Model Comparison on the Validation set
 
 ![](https://github.com/Engelbert107/maternal-health-risk-workflow-with-prefect/blob/main/images/compare-models.png)
+![](https://github.com/Engelbert107/maternal-health-risk-workflow-with-prefect/blob/main/images/stack-vot.png)
 
 
 ## Get an Overview of how our run is Performing on the Cloud
