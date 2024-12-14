@@ -29,6 +29,10 @@ We also orchestrated the workflow for the best-performing model, K-Nearest Neigh
 ![](https://github.com/Engelbert107/maternal-health-risk-workflow-with-prefect/blob/main/images/compare-models.png)
 
 
+## Get an Overview of how our run is Performing on the Cloud
+
+![](https://github.com/Engelbert107/maternal-health-risk-workflow-with-prefect/blob/main/images/running-view.png)
+
 
 ## How to Test our Workflow ?
 1. Download the project repository to explore the code and documentation.
@@ -40,12 +44,22 @@ We also orchestrated the workflow for the best-performing model, K-Nearest Neigh
     ```bash
     python3 orchestrate.py
     ```
+4. Build the Docker custom image from the Dockerfile
+    ```bash
+    docker build -t my-docker-image-api .
+    ```
+5. Run the container
+    ```bash
+    docker run --name my-docker-api -p 5000:5000 my-docker-image-api
+    ```
+6. Open your browser here
+    ```bash
+    http://localhost:5000/apidocs
+    ```
 
+## See how it works with a demo
 
-## Get an Overview of how our run is Performing on the Cloud
-
-![](https://github.com/Engelbert107/maternal-health-risk-workflow-with-prefect/blob/main/images/running-view.png)
-
+![](https://github.com/Engelbert107/maternal-health-risk-workflow-with-prefect/blob/main/images/demo.gif)
 
 
 ## Access this Repository Through the Following Links:
