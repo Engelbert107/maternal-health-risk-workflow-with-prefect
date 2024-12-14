@@ -8,4 +8,4 @@ WORKDIR /app
 
 RUN pip install -r requirements.txt
 
-CMD ["python", "flaskAPI.py"]
+CMD ["python", "flaskAPI"]
