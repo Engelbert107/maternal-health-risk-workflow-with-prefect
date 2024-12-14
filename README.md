@@ -30,7 +30,7 @@ We have successfully deployed our best-performing K-Nearest Neighbors model usin
 ![](https://github.com/Engelbert107/maternal-health-risk-workflow-with-prefect/blob/main/images/stack-vot.png)
 
 
-## Get an Overview of how our run is Performing on the Cloud
+## Get an Overview of how our run is Performing on the Prefect Cloud
 
 ![](https://github.com/Engelbert107/maternal-health-risk-workflow-with-prefect/blob/main/images/running-view.png)
 
