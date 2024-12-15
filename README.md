@@ -36,24 +36,26 @@ We have successfully deployed our best-performing K-Nearest Neighbors model usin
 
 
 ## How to Test our Workflow ?
-1. Download the project repository to explore the code and documentation.
-2. Install packages.
+
+1. Install [Docker](https://docs.docker.com/get-started/get-docker/) on your system
+2. Download the project repository to explore the code and documentation.
+3. Install packages.
     ```bash
     pip install -r requirements.txt
     ```
-3. Run the workflow
+4. Run the workflow
     ```bash
     python3 orchestrate.py
     ```
-4. Build the Docker custom image from the Dockerfile
+5. Build the Docker custom image from the Dockerfile
     ```bash
     docker build -t my-docker-image-api .
     ```
-5. Run the container
+6. Run the container
     ```bash
     docker run --name my-docker-api -p 5000:5000 my-docker-image-api
     ```
-6. Open your browser here
+7. Open your browser here
     ```bash
     http://localhost:5000/apidocs
     ```
