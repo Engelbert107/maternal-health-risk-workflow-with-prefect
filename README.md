@@ -37,8 +37,8 @@ We have successfully deployed our best-performing K-Nearest Neighbors model usin
 
 ## How to Test our Workflow ?
 
-1. Install [Docker](https://docs.docker.com/get-started/get-docker/) on your system.
-2. Download the project repository to explore the code and documentation.
+1. Install [Docker](https://docs.docker.com/get-started/get-docker/) on your system
+2. Clone this repository
 3. Install packages.
     ```bash
     pip install -r requirements.txt
