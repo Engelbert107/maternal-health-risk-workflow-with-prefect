@@ -35,7 +35,7 @@ We have successfully deployed our best-performing K-Nearest Neighbors model usin
 ![](https://github.com/Engelbert107/maternal-health-risk-workflow-with-prefect/blob/main/images/running-view.png)
 
 
-## How to Test our Workflow ?
+## To run Workflow 
 
 1. Install [Docker](https://docs.docker.com/get-started/get-docker/) on your system
 2. Clone this repository
@@ -60,7 +60,7 @@ We have successfully deployed our best-performing K-Nearest Neighbors model usin
     http://localhost:5000/apidocs
     ```
 
-## See how it works with a demo
+## See how it Works With a demo
 
 ![](https://github.com/Engelbert107/maternal-health-risk-workflow-with-prefect/blob/main/images/demo.gif)
 
