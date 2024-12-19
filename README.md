@@ -60,7 +60,7 @@ We have successfully deployed our best-performing K-Nearest Neighbors model usin
     http://localhost:5000/apidocs
     ```
 
-## See how it Works With a demo
+## See how it Works With a Demo
 
 ![](https://github.com/Engelbert107/maternal-health-risk-workflow-with-prefect/blob/main/images/demo.gif)
 
