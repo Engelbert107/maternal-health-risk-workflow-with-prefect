@@ -35,7 +35,7 @@ We have successfully deployed our best-performing K-Nearest Neighbors model usin
 ![](https://github.com/Engelbert107/maternal-health-risk-workflow-with-prefect/blob/main/images/running-view.png)
 
 
-## To run Workflow 
+## How to run Workflow ?
 
 1. Install [Docker](https://docs.docker.com/get-started/get-docker/) on your system
 2. Clone this repository
