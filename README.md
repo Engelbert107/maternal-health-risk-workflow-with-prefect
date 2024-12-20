@@ -37,7 +37,7 @@ We have successfully deployed our best-performing K-Nearest Neighbors model usin
 
 ## Want to try our Workflow ?
 
-1. Install [Docker](https://docs.docker.com/get-started/get-docker/) on your system
+1. Install [Docker](https://docs.docker.com/get-started/get-docker/) on your system.
 2. Clone this repository:
     ```bash
     git clone https://github.com/Engelbert107/maternal-health-risk-workflow-with-prefect.git
