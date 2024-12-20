@@ -54,7 +54,7 @@ We have successfully deployed our best-performing K-Nearest Neighbors model usin
     ```bash
     docker build -t my-docker-image-api .
     ```
-6. Run the container
+6. Run the container:
     ```bash
     docker run --name my-docker-api -p 5000:5000 my-docker-image-api
     ```
