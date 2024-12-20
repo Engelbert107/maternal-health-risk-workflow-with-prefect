@@ -46,7 +46,7 @@ We have successfully deployed our best-performing K-Nearest Neighbors model usin
     ```bash
     pip install -r requirements.txt
     ```
-4. Run the workflow
+4. Run the workflow:
     ```bash
     python3 orchestrate.py
     ```
