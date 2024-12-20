@@ -58,7 +58,7 @@ We have successfully deployed our best-performing K-Nearest Neighbors model usin
     ```bash
     docker run --name my-docker-api -p 5000:5000 my-docker-image-api
     ```
-7. Open your browser and go to
+7. Open your browser and go to:
     ```bash
     http://localhost:5000/apidocs
     ```
