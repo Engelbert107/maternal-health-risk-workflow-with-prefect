@@ -42,7 +42,7 @@ We have successfully deployed our best-performing K-Nearest Neighbors model usin
     ```bash
     git clone https://github.com/Engelbert107/maternal-health-risk-workflow-with-prefect.git
     ```
-3. Install packages.
+3. Install packages
     ```bash
     pip install -r requirements.txt
     ```
