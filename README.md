@@ -50,7 +50,7 @@ We have successfully deployed our best-performing K-Nearest Neighbors model usin
     ```bash
     python3 orchestrate.py
     ```
-5. Build the Docker custom image from the Dockerfile
+5. Build the custom Docker image from the Dockerfile
     ```bash
     docker build -t my-docker-image-api .
     ```
